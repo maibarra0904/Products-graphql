@@ -1,23 +1,16 @@
 export const typeDefs = `#graphql
 
-type Rol {
-    name: String!
-}
 
-input UserID {
-    id: ID
-}
-
-type User {
-    id: ID
+type Product {
+    id: ID!
     name: String!
-    email: String
-    rol: Rol
+    price: Float!
+    stock: Int!
+    createdAt: String!
+    updatedAt: String!
 }
 
 type Query {
-    users: [User!]!
-    user(id: UserID!): [User]
-    roles: [Rol]
+    products: [Product]
 }
 `;

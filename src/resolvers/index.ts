@@ -1,17 +1,13 @@
-
-
-
 export const resolvers = {
     Query: {
 
-        user: (parent, args, context, info) => {
+        products: async (_, __, {dataSources} ) => {
             
-            const {id} = args
-            console.log(id.id)
-            //console.log(users)
-            
+            const {products} = await dataSources.productsAPI.getAllProducts();       
+
             
 
+            return await products;
         }
     }
 };
