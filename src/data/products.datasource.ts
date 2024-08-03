@@ -1,4 +1,4 @@
-import {RESTDataSource} from "@apollo/datasource-rest"
+import { RESTDataSource } from "@apollo/datasource-rest"
 
 export class ProductsAPI extends RESTDataSource {
 
@@ -12,8 +12,20 @@ export class ProductsAPI extends RESTDataSource {
     }
 
     async getProductById(id: string) {
-        const {product} = await this.get(`/products/${encodeURI(id)}`)
+        const { product } = await this.get(`/products/${encodeURI(id)}`)
 
         return !product ? {} : product
+    }
+
+    async createProduct(name: string, price: number, stock: number) {
+        const {product} = await this.post(`/products`, {
+            body: {
+                name,
+                price,
+                stock
+            }
+        })
+
+        return product
     }
 }

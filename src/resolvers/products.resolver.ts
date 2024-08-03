@@ -15,4 +15,10 @@ export const productsQuerys = {
 
 export const productsMutations = {
 
+    createProduct: async (_, {input}, {dataSources}) => {
+
+        const {name, price, stock} = input
+
+        return await dataSources.productsAPI.createProduct(name, price, stock)
+    }
 }
