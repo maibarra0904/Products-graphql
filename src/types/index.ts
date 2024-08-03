@@ -23,7 +23,7 @@ input ProductUpdate {
     stock: Int
 }
 
-type Updated {
+type Result {
     msg: String
 }
 
@@ -34,7 +34,8 @@ type Query {
 
 type Mutation {
     createProduct(input: ProductInput!): Product
-    updateProduct(input: ProductUpdate!): Updated
+    updateProduct(input: ProductUpdate!): Result
+    deleteProduct(id: ID!): Result
 }
 
 `;

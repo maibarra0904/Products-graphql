@@ -54,4 +54,21 @@ export class ProductsAPI extends RESTDataSource {
 
         return {msg: `Product with id ${encodeURI(id)} updated`}
     }
+
+    async deleteProduct(id: string) {
+        const productToDelete = await this.get(`/products/${encodeURI(id)}`)
+
+        if (!productToDelete) {
+            throw new Error("Product not found")
+        }
+    
+        const data = await this.delete(`/products/${encodeURI(id)}`)
+
+        if (data) {
+            return {msg: `Product with id ${encodeURI(id)} deleted`}
+        }
+
+        throw new Error("Error deleting product")
+    
+    }
 }
