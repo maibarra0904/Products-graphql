@@ -11,6 +11,7 @@ type Product {
 }
 
 type Query {
-    products: [Product]
+    getAllProducts: [Product]
+    getProductById(id: ID!): Product
 }
 `;

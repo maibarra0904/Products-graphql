@@ -10,4 +10,10 @@ export class ProductsAPI extends RESTDataSource {
 
         return !products ? [] : products
     }
+
+    async getProductById(id: string) {
+        const {product} = await this.get(`/products/${encodeURI(id)}`)
+
+        return !product ? {} : product
+    }
 }
