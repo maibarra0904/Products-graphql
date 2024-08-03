@@ -20,5 +20,12 @@ export const productsMutations = {
         const {name, price, stock} = input
 
         return await dataSources.productsAPI.createProduct(name, price, stock)
+    },
+
+    updateProduct: async (_, {input}, {dataSources}) => {
+    
+        const {id, name, price, stock} = input
+
+        return await dataSources.productsAPI.updateProduct(id, name, price, stock)
     }
 }

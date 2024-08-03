@@ -10,10 +10,21 @@ type Product {
     updatedAt: String!
 }
 
-type ProductInput {
+input ProductInput {
     name: String!
     price: Float!
     stock: Int!
+}
+
+input ProductUpdate {
+    id: ID!
+    name: String
+    price: Float
+    stock: Int
+}
+
+type Updated {
+    msg: String
 }
 
 type Query {
@@ -21,14 +32,9 @@ type Query {
     getProductById(id: ID!): Product
 }
 
-input CreateProductInput {
-  name: String!
-  price: Float!
-  stock: Float!
-}
-
 type Mutation {
-    createProduct(input: CreateProductInput!): Product
+    createProduct(input: ProductInput!): Product
+    updateProduct(input: ProductUpdate!): Updated
 }
 
 `;
